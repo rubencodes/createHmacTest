@@ -1,6 +1,7 @@
 import './style';
 import { Component } from 'preact';
 import { Result } from './result';
+import createHmac from 'create-hmac';
 
 const SEARCH = '//api.github.com/search/repositories';
 
@@ -13,6 +14,8 @@ export default class App extends Component {
 					results: json && json.items || []
 				});
 			});
+
+		let hmac = createHmac('sha256', 'test-secret');
 	}
 
 	render(props, { results=[] }) {
